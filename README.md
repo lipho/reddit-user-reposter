@@ -1,4 +1,4 @@
 # reddit-user-reposter
 A reddit utility that scan's a user's account and reposts its submissions and comments above a defined karma threshold in a subreddit of choice.
 
-Thanks for @voussoir for his method of checking for storing old submissions & comments in a db
+Thanks for @voussoir (/u/GoldenSights) for his method of checking for storing old submissions & comments in a db
