@@ -44,7 +44,9 @@ def rep_bot_coms():
 					#since comments don't have titles, the first 10 words become post title
 					repost_title_list = repost_comment_body.split()
 					repost_title = ' '.join(repost_title_list[:10]) + "..."
-					r.submit(SUBREDDIT, repost_title, repost_comment_body+"\n > I'm a bot that is reposting from /u/%s. If there's any trouble, please message /u/plus20charisma!" % USERSCRAPE)
+					r.submit(SUBREDDIT, repost_title, repost_comment_body + "\n Permalink: " + comment.permalink +
+					"""\n***\n> I'm a bot that is reposting from /u/%s. If there's 
+					any trouble, please message /u/plus20charisma!""" % USERSCRAPE)					
 					print ("Comment posted to /r/"+SUBREDDIT+"!")
 			except AttributeError:
 				pass
@@ -66,8 +68,10 @@ def rep_bot_submitted():
 					print ("Reposting submission above Karma Threshold...")
 					repost_title = post.title
 					repost_url = post.url
-					r.submit(SUBREDDIT, repost_title, repost_url+"\n > I'm a bot that is reposting from /u/%s. If there's any trouble, please message /u/plus20charisma!" % USERSCRAPE)
-					print ("Submission posted to /r/"+SUBREDDIT+"!")
+					r.submit(SUBREDDIT, repost_title, "Title:" + repost_title + repost_url + 
+					"""\nOriginal Submission: %s \n***\n> I'm a bot that is reposting from /u/%s. 
+					If there's any trouble, please message /u/plus20charisma!""" % (post.short_link, USERSCRAPE))
+					print "Submission posted to /r/"+SUBREDDIT+"!"
 			except AttributeError:
 				pass
 			cur.execute('INSERT INTO oldsubmissions VALUES(?)', [post.id])
